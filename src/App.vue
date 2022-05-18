@@ -1,18 +1,39 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <b-button id="button" variant="light" class="dropdown-toggle">
+      <span>Button</span>
+    </b-button>
+
+    <b-popover
+      target="button"
+      title="Popover"
+      placement="bottom"
+      boundary="window"
+      custom-class="popover-dropdown"
+      triggers="click blur"
+      no-fade
+    >
+      <b-pagination
+        align="center"
+        v-model="currentPage"
+        :per-page="10"
+        :total-rows="100"
+        size="sm"
+        limit="3"
+        class="pt-2 m-0"
+      ></b-pagination>
+    </b-popover>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+  name: "App",
+  data() {
+    return {
+      currentPage: 1,
+    }
+  },
 }
 </script>
 
